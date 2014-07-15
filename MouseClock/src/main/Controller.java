@@ -32,7 +32,8 @@ public class Controller {
 			public void keyPressed(KeyEvent e) {
 				if (!started && e.getKeyCode() == KeyEvent.VK_S){
 					started = true;
-					inClosed = true;
+					inClosed = false;
+					inOpen = false;
 					System.out.println("Starting!!");
 				}else if (!started){
 					return;
