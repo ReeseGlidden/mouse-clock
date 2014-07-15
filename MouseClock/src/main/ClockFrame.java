@@ -1,6 +1,8 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 
 import javax.swing.Box;
@@ -23,6 +25,7 @@ public class ClockFrame extends JFrame{
 	JMenuBar menuBar = new JMenuBar();
 	JMenu fileMenu = new JMenu("File");
 	JMenuItem resetMenuItem = new JMenuItem("Reset"); //TODO: Wire up
+	Color TEXT_COLOR = new Color(85,5,85);
 	Experiment experiment;
 	
 	public ClockFrame(Experiment e){
@@ -76,8 +79,20 @@ public class ClockFrame extends JFrame{
 		panel.add(leftPanel,BorderLayout.WEST);
 		//////
 		this.add(panel);
+		//
+		colorizeLabels();
 	}
 	
+	private void colorizeLabels() {
+		closedLabel.setForeground(TEXT_COLOR);
+		openLabel.setForeground(TEXT_COLOR);
+		countdownLabel.setForeground(TEXT_COLOR);
+		openTimeLabel.setForeground(TEXT_COLOR);
+		openCountLabel.setForeground(TEXT_COLOR);
+		closedTimeLabel.setForeground(TEXT_COLOR);
+		closedCountLabel.setForeground(TEXT_COLOR);
+	}
+
 	public void paint(Graphics g){
 		countdownLabel.setText(Experiment.toMinSec(experiment.duration));
 		openCountLabel.setText(""+experiment.openEntries);
